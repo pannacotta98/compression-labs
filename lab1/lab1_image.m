@@ -61,6 +61,24 @@ vertPairProbs = vertPairCounts ./ numVertPairs;
 vertPairEntropy = -sum(vertPairProbs(:) .* log2(vertPairProbs(:)), 'omitnan')
 vertCondEntropy = vertPairEntropy - entropy
 
+%% Huffman
+noPredRate = huffman(probs)
+
+%% Functions
+
+function pred = predictor1(samples)
+    % TODO
+
+end
+
+
+function rate = huffmanDiffRate(samples, predictedSamples)
+    diff = samples - predictedSamples;
+    numPixels = size(diff, 1) * size(diff, 2);
+    [counts, ~] = intHistogram(diff(:), 0, 255);
+    probs = counts ./ numPixels;
+    rate = huffman(probs) / 1;
+end
 
 
 

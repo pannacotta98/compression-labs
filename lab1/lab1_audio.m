@@ -25,7 +25,7 @@ end
 
 %% ...
 pairProbs = pairCounts ./ numPairs;
-condProbs = pairCounts ./ counts;
+condProbs = pairCounts ./ counts; % is this right?
 
 pairEntropy = -sum(pairProbs(:) .* log2(pairProbs(:)), 'omitnan') % H(Xi,Xi+1)
 condEntropy = pairEntropy - entropy % H(Xi+1 | Xi)
