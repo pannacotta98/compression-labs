@@ -63,7 +63,7 @@ end
 
 function rate = huffmanDiffRate(samples, predictedSamples)
     diff = samples - predictedSamples;
-    [counts, ~] = intHistogram(diff, -128, 127);
+    [counts, ~] = intHistogram(diff, -255, 255);
     probs = counts ./ length(samples);
     rate = huffman(probs) / 1;
 end

@@ -9,6 +9,8 @@ function [counts, bins] = intHistogram(x, min, max)
     
     %% Check hehe
     if (sum(counts) ~= length(x))
+%         sum(counts)
+%         size(x)
         error('oops');
     end
 end
