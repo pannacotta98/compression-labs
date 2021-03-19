@@ -1,15 +1,18 @@
 function [bits, bpp, dist, psnr]=transcoder(block, quantStepLuminance, ...
     quantStepChrominance, srcCodingMethod, transform, subsampleFactor, ...
-    showFig)
+    showFig, imageName)
 
 % This is a very simple transform coder and decoder. Copy it to your directory
 % and edit it to suit your needs.
 % You probably want to supply the image and coding parameters as
 % arguments to the function instead of having them hardcoded.
 
+if nargin == 7
+    imageName = 'image1.png';
+end
 
 % Read an image
-im=double(imread('image1.png'))/255;
+im=double(imread(imageName))/255;
 
 % What blocksize do we want?
 blocksize = [block block];
@@ -124,9 +127,9 @@ dist = mean((im(:)-imr(:)).^2);
 psnr = 10*log10(1/dist);
 
 if showFig
-%     % Display the original image
-%     figure, imshow(im)
-%     title('Original image')
+    % Display the original image
+    figure, imshow(im)
+    title('Original image')
     
     %Display the coded and decoded image
     figure, imshow(imr);
